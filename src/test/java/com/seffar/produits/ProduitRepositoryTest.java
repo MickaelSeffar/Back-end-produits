@@ -1,7 +1,10 @@
 package com.seffar.produits;
 
+import com.seffar.produits.dao.entities.Categorie;
 import com.seffar.produits.dao.entities.Produit;
+import com.seffar.produits.dao.repositories.CategorieRepository;
 import com.seffar.produits.dao.repositories.ProduitRepository;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,12 +19,19 @@ public class ProduitRepositoryTest {
     @Autowired
     private ProduitRepository produitRepository;
 
+    @Autowired
+    private CategorieRepository categorieRepository;
+
     @Test
     void testCreateProduit(){
+
+        Optional<Categorie> optionalCategorie = categorieRepository.findById(2L);
+        Categorie categorie = optionalCategorie.get();
         Produit produit = new Produit();
-        produit.setNomProduit("Pc HP");
-        produit.setPrixProduit(1999.99);
+        produit.setNomProduit("MacBook Air 15");
+        produit.setPrixProduit(1499.99);
         produit.setDateCreation(LocalDate.now());
+        produit.setCategorie(categorie);
         produitRepository.save(produit);
     }
 
