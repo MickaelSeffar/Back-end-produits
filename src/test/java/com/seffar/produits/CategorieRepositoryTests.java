@@ -19,13 +19,9 @@ public class CategorieRepositoryTests {
     @Test
     void testCreateCategorie(){
         Categorie categorie = new Categorie();
-        categorie.setNomCat("PC");
-        categorie.setDescriptionCat("Les ordinateurs windows");
-        Categorie categorie1 = new Categorie();
-        categorie1.setNomCat("Mac");
-        categorie1.setDescriptionCat("Les ordinateurs mac");
+        categorie.setNomCat("Consoles de jeux");
+        categorie.setDescriptionCat("Les consoles de jeux");
         categorieRepository.save(categorie);
-        categorieRepository.save(categorie1);
 
     }
 

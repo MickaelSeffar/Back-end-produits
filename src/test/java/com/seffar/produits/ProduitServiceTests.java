@@ -26,15 +26,12 @@ public class ProduitServiceTests {
         Produit produit = new Produit();
         Optional<Categorie> optionalCategorie = categorieService.getCategorie(2L);
         Categorie categorie = optionalCategorie.get();
-        produit.setNomProduit("MacBook Air 16");
-        produit.setPrixProduit(2999.99);
+        produit.setNomProduit("MacBook Pro 16");
+        produit.setPrixProduit(3999.99);
         produit.setCategorie(categorie);
         produit.setDateCreation(LocalDate.now());
 
-        // Appel de la méthode createProduit du service
         produitService.createProduit(produit);
-
-        // Ajoutez vos assertions ou vérifications ici si nécessaire
     }
 
     @Test
@@ -55,11 +52,6 @@ public class ProduitServiceTests {
             produit.setPrixProduit(3999.99);
             produitService.createProduit(produit);
         }
-    }
-
-    @Test
-    void testDeleteProduit() {
-        produitService.deleteProduitById(2L);
     }
 
 

@@ -1,5 +1,6 @@
 package com.seffar.produits.dao.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -15,19 +16,17 @@ public class Categorie {
     private String descriptionCat;
 
     @OneToMany(mappedBy = "categorie")
+    @JsonIgnore
     private List<Produit> produits = new ArrayList<>();
 
     public Categorie() {
     }
 
-    public Categorie(String nomCat, String descriptionCat, List<Produit> produits) {
+    public Categorie(String nomCat, String descriptionCat) {
         this.nomCat = nomCat;
         this.descriptionCat = descriptionCat;
-        this.produits = produits;
     }
 
-    public Categorie(String mac, String nosOrdinateursApple) {
-    }
 
     public Long getId() {
         return id;

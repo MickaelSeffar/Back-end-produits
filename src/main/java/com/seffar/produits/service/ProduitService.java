@@ -18,11 +18,23 @@ public class ProduitService {
         return produitRepository.save(produit);
     }
 
-//    public Produit updateProduit(Produit produit);
-    public void deleteProduit(Long id) {
-        produitRepository.deleteById(id);
+    public Produit updateProduit(Long id, Produit produit) {
+        Optional<Produit> existingProduitOpt = getProduit(id);
+        if (!existingProduitOpt.isPresent()) {
+            // Si le produit n'existe pas, vous pouvez lancer une exception ou effectuer une autre action appropriée.
+            // Ici, nous choisissons simplement de retourner null.
+            return null;
+        }
+
+        Produit existingProduit = existingProduitOpt.get();
+        existingProduit.setNomProduit(produit.getNomProduit());
+        existingProduit.setPrixProduit(produit.getPrixProduit());
+        existingProduit.setDateCreation(produit.getDateCreation());
+        existingProduit.setCategorie(produit.getCategorie());
+        return produitRepository.save(existingProduit);
     }
-    public void deleteProduitById(Long id) {
+
+    public void deleteProduit(Long id) {
         produitRepository.deleteById(id);
     }
 
@@ -30,7 +42,11 @@ public class ProduitService {
         return produitRepository.findById(id);
     }
 
-    public List<Produit> getAllProduits(){
-        return  produitRepository.findAll();
+    public List<Produit> getAllProduits() {
+        return produitRepository.findAll();
+    }
+
+    public List<Produit> findByCategorieId(Long id){
+        return produitRepository.findByCategorieId(id);
     }
 }

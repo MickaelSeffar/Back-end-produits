@@ -25,11 +25,11 @@ public class ProduitRepositoryTest {
     @Test
     void testCreateProduit(){
 
-        Optional<Categorie> optionalCategorie = categorieRepository.findById(2L);
+        Optional<Categorie> optionalCategorie = categorieRepository.findById(1L);
         Categorie categorie = optionalCategorie.get();
         Produit produit = new Produit();
-        produit.setNomProduit("MacBook Air 15");
-        produit.setPrixProduit(1499.99);
+        produit.setNomProduit("Asus ROG");
+        produit.setPrixProduit(1099.99);
         produit.setDateCreation(LocalDate.now());
         produit.setCategorie(categorie);
         produitRepository.save(produit);
@@ -76,5 +76,17 @@ public class ProduitRepositoryTest {
     void testFindByNomPrix(){
         List<Produit> produits = produitRepository.findByNomPrix("PC MSI", 20.00);
         System.out.println(produits);
+    }
+
+    @Test
+    void testFindByCategorieId(){
+        List<Produit> produits = produitRepository.findByCategorieId(2L);
+        System.out.println(produits);
+    }
+
+    @Test
+    void testFindByOrderByNomProduitAsc(){
+       List<Produit> produits =  produitRepository.findByOrderByNomProduitAsc();
+        System.out.println(produits );
     }
 }

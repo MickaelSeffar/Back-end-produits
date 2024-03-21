@@ -16,12 +16,13 @@ public class Produit {
     private LocalDate dateCreation;
 
     @ManyToOne
+    @JoinColumn(name="categorie_id", nullable = false)
     private Categorie categorie;
 
     public Produit() {
     }
 
-    public Produit(String nomProduit, Double prixProduit, LocalDate dateCreation, Categorie categorie) {
+    public Produit(String nomProduipt, Double prixProduit, LocalDate dateCreation, Categorie categorie) {
         this.nomProduit = nomProduit;
         this.prixProduit = prixProduit;
         this.dateCreation = dateCreation;
