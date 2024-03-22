@@ -21,8 +21,7 @@ public class ProduitService {
     public Produit updateProduit(Long id, Produit produit) {
         Optional<Produit> existingProduitOpt = getProduit(id);
         if (!existingProduitOpt.isPresent()) {
-            // Si le produit n'existe pas, vous pouvez lancer une exception ou effectuer une autre action appropriée.
-            // Ici, nous choisissons simplement de retourner null.
+
             return null;
         }
 
